@@ -1,11 +1,7 @@
 import express from 'express';
 import { myDataSource } from './data-source';
-import CreateRecipeController from '../presentation/controllers/recipe/create-recipe-controller';
-import AddRecipeRepository from '../infra/db/add-recipe';
-import { RepositoryAdapter } from '../infra/db/helper/repository-adapter';
-import RouteAdapter from './route/adapter/route-adapter';
-import { bodyParser } from './middlewares/body-parser';
-import { makeRecipeValidator } from './factory/create-recipe-factory';
+import setMiddlewares from './config/middlewares';
+import { routes } from './config/routes';
 const app = express();
 
 app.listen(3000, () => {
@@ -20,12 +16,5 @@ app.listen(3000, () => {
     });
 });
 
-const makeController = () => {
-  const validator = makeRecipeValidator();
-  const repositoryAdapter = new RepositoryAdapter();
-  const addRepository = new AddRecipeRepository(repositoryAdapter);
-  return new CreateRecipeController(validator, addRepository);
-};
-
-app.use(bodyParser);
-app.post('/enviar', RouteAdapter(makeController()));
+setMiddlewares(app);
+routes(app);

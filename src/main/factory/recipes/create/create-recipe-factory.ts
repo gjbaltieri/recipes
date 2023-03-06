@@ -1,6 +1,6 @@
-import { RequiredFieldValidation } from '../../presentation/helper/validator/required-fields-validator';
-import ValidatorComposite from '../../presentation/helper/validator/validator-composite';
-import { Validation } from '../../presentation/protocols/fields-validator';
+import { RequiredFieldValidation } from '../../../../presentation/helper/validator/required-fields-validator';
+import ValidatorComposite from '../../../../presentation/helper/validator/validator-composite';
+import { Validation } from '../../../../presentation/protocols/fields-validator';
 
 export const makeRecipeValidator = (): ValidatorComposite => {
   const validations: Validation[] = [];
