@@ -15,15 +15,18 @@ export default class CreateRecipeController implements Controller {
       if (isValid) {
         return badRequest(isValid);
       }
-      const { name, category, preparation_time, servings } = httpRequest.body;
+      const { name, category, preparation_time, servings, author } =
+        httpRequest.body;
       const addRecipe = await this.addRecipe.add({
         name,
         category,
         preparation_time,
         servings,
+        author,
       });
       return ok(addRecipe);
     } catch (error) {
+      console.log(error);
       return serverError();
     }
   }

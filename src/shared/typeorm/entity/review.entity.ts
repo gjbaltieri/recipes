@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  CreateDateColumn,
+} from 'typeorm';
 import { Recipe } from './recipe.entity';
 
 @Entity()
@@ -17,4 +23,7 @@ export class Review {
 
   @ManyToOne(() => Recipe, (recipe) => recipe.id)
   recipe_id: Recipe;
+
+  @CreateDateColumn({ type: 'timestamp with time zone' })
+  created_At: Date;
 }

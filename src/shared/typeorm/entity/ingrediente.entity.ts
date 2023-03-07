@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToOne,
@@ -24,4 +25,7 @@ export class Ingredientes {
   @OneToOne(() => Recipe, (recipe) => recipe.id)
   @JoinColumn()
   recipe_id: Recipe;
+
+  @CreateDateColumn({ type: 'timestamp with time zone' })
+  created_At: Date;
 }

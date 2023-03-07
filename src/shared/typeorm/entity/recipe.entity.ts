@@ -1,8 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Recipe {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
@@ -16,4 +21,10 @@ export class Recipe {
 
   @Column()
   servings: number;
+
+  @CreateDateColumn({ type: 'timestamp with time zone' })
+  created_At: Date;
+
+  @Column()
+  author: string;
 }

@@ -3,4 +3,5 @@ export interface AddRecipeModel {
   category: string[];
   preparation_time: number;
   servings: number;
+  author: string;
 }

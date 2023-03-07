@@ -7,6 +7,7 @@ export default class AddRecipeRepository implements AddRecipe {
   constructor(private readonly respository: RepositoryModel) {}
   async add(recipe: AddRecipeModel): Promise<AddRecipeModel> {
     const recipeRepository = this.respository.get(Recipe);
+    console.log(recipe);
     const createRecipe = recipeRepository.create(recipe);
     const saveRecipe = await recipeRepository.save(createRecipe);
     return saveRecipe as AddRecipeModel;
